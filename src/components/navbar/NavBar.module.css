@@ -1,0 +1,13 @@
+.container{
+    width: 100%;
+    height: 13vh;
+    background-color: red;
+    position: absolute;
+    bottom: 0;
+    font-family: 'Kanit', sans-serif;
+    display: flex;
+}
+
+.container h3{
+    margin-right: 20px;
+}

@@ -1,0 +1,9 @@
+.container{   
+    width: 100%;
+    height: 100vh;
+    background-color: #F7F8FD;
+    font-family: "Sukhumvit";
+    overflow-y: hidden;
+    overflow-y: hidden;
+    display: flex;
+}

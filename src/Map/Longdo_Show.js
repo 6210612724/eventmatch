@@ -143,7 +143,7 @@ class Map_Show extends Component {
 
         </div>
         <div className={styles.btn_section}>
-          <div className={styles.confirm}><Form_location/></div>
+          <div className={styles.confirm}><Form_location user={this.props.user}/></div>
         </div>
         <div className={styles.map_section}>
           <div className={styles.map}>

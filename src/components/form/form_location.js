@@ -5,13 +5,13 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { longdo, map, LongdoMap } from "../../Map/LongdoMapAPI"
 import Iframe from 'react-iframe'
 
-function Insert_Activity(){
+function Insert_Activity(user){
   let activityName = document.forms["location_form"]["activityName"].value 
   let lon = document.forms["location_form"]["lon"].value
   let lat = document.forms["location_form"]["lat"].value
   let activityDesc = document.forms["location_form"]["activityDesc"].value
 
-  fetch(`http://localhost:4000/insert/activity?activityName=${activityName}&lon=${lon}&lat=${lat}&activityDesc=${activityDesc}`)
+  fetch(`http://localhost:4000/insert/activity?activityName=${activityName}&lon=${lon}&lat=${lat}&activityDesc=${activityDesc}&owner=${user}`)
 
  
 
@@ -21,15 +21,19 @@ function Insert_Activity(){
 lon : ${lon}
 lat : ${lat}
 desc : ${activityDesc}
+username : ${user}
 `)
 
 }
 
 function Form_location(props) {
+  const {user} = props
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => [setShow(true), setLon(map.location().lon), setLat(map.location().lat)];
 
+  
   const [lon, setLon] = useState(1)
   const [lat, setLat] = useState(1)
   return (
@@ -52,7 +56,7 @@ function Form_location(props) {
         {/* <frame name="dummyframe" id="dummyframe" style="display: none;"></frame> */}
         {/* <Iframe  className="dummyframe" id="dummyframe" style="display: none;"></Iframe> */}
 
-          <form id="location_form" method="GET" onSubmit={() => Insert_Activity()}>
+          <form id="location_form" method="GET" onSubmit={() => Insert_Activity(user)}>
             <label htmlFor="activityName" >Activity name</label>
             <input type="text" id="activityName" name="activityName" required placeholder='ใส่หัวข้อ Activity'></input><br></br>
             <label htmlFor="lon" >Longitude ลองจิจูด</label>

@@ -18,7 +18,7 @@ const dbName = "allData"
 //
 
 
-const url = `mongodb://root:thanawin27@ac-pkga0xd-shard-00-00.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-01.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-02.obwrvlc.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-djl2tz-shard-0&authSource=admin&retryWrites=true&w=majority`
+const url = `mongodb://123456:102030@ac-8cirrld-shard-00-00.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-01.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-02.wknopaa.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-l9gxf6-shard-0&authSource=admin&retryWrites=true&w=majority`
 
 // jswebtoken
 var jwt = require('jsonwebtoken');
@@ -121,6 +121,34 @@ app.post('/login', jsonParser,function (req, res, next){
   console.log(check_login)
   
   // console.log(JSON.stringify(req.query))
+})
+
+app.get('/joinActivity', async (req, res) => {
+  let activityName = req.query.activityName
+  let guest = req.query.guest
+  let join_result = true
+  console.log("guest",guest)
+  let check_guestIsowner = await activity.findOne({activityName:activityName,owner:guest})
+  console.log("check",check_guestIsowner)
+  if(check_guestIsowner != null){
+    console.log("you are owner, can't join...")
+    join_result = false
+  }else{
+    await activity.findOneAndUpdate({activityName:activityName},{ $push :{guest:guest}})
+    console.log("you joined this activity...")
+    join_result = true
+  }
+  console.log(JSON.stringify(req.query))
+  res.json(join_result)
+})
+
+app.get('/myActivity', async (req, res) => {
+  let username = await req.query.user
+  
+  let result = await activity.find({owner:username})
+  console.log(`username : ${username} `)
+  // console.log(result)
+  res.json(result)
 })
 
 

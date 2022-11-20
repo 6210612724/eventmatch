@@ -6,6 +6,8 @@ const activitySchema = new mongoose.Schema ({
     lon: { type: Number,},
     lat : { type: Number,},
     activityDesc : { type:String },
+    owner: {type:String},
+    guest: [{type:String} ]
 
 })
 

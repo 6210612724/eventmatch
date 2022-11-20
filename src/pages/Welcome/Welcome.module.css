@@ -30,7 +30,12 @@
 .logo{
     width: 50vw;
     height: 25vh;
-    background-color: black;
+   
+}
+
+.logos{
+    width: 50vw;
+    height: 25vh;
 }
 
 .title_container{

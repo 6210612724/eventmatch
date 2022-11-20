@@ -4,6 +4,7 @@ import './index.css';
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
 import CreateActivity from './pages/CreateActivity/CreateActivity';
+import MyActivity from './pages/MyActivity/MyActivity';
 import {
   BrowserRouter as Router,
   Routes,
@@ -16,7 +17,8 @@ root.render(
       <Routes >         
           <Route path="/" element={<Welcome />} />      
           <Route path="/home" element={<Home/>} />  
-          <Route path="/createactivity" element={<CreateActivity/>} />        
+          <Route path="/createactivity" element={<CreateActivity/>} />  
+          <Route path="/myactivity" element={<MyActivity/>} />      
       </Routes>
   </Router>
 );

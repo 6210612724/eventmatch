@@ -4,6 +4,10 @@ import {Link} from "react-router-dom";
 
 
 export default function Home() {
+
+  function logoutHandler(){
+    localStorage.removeItem('token')
+  }
   return (
     <div className={styles.container}>  
       <div className={styles.btn_container}>   
@@ -22,9 +26,7 @@ export default function Home() {
         <Link style={{ textDecoration: 'none' }} to="/myactivity">
             <img src='/ActivityLogo.svg' alt='Home'/>
         </Link>
-        <Link style={{ textDecoration: 'none' }} to="/">
-            <img src='/ActivityLogo.svg' alt='Home'/>
-        </Link>
+        <button onClick={logoutHandler}>logout</button>
        </div>  
     </div>
   )

@@ -14,6 +14,7 @@ import Location from "../data/location.json"
 
 
 function Get_location() {
+  
   // let data = []
   // for (let i = 0; i < Location.length; i++) {
   //   data.push({
@@ -121,40 +122,41 @@ class Map_Show extends Component {
   render() {
     const mapKey = '0cb349dadf75515ec2cdeee6677a9693'
 
-    return (<>
-      {/* name = ตรง div เปรียบได้กับการส่ง data ให้กับหน้านั้นนะจ๊ะ */}
-      {/* <Form_location locate={map.location()} ></Form_location> */}
-      <Form_location  ></Form_location>
-      
-
-      <div style={{ float: "left", width: "85%", height: `750px`, }}>
-
-        <LongdoMap id="longdo-map" mapKey={mapKey} callback={this.initMap} />
-
-      </div>
+    return (
+      <>
+        <p>{this.props.user}</p>
+        <div className={styles.dropdown_section}>
         <div className={styles.dropdown} >
-          <button onClick={() => map.location({ lon: 100.60753718018532, lat: 14.069046759560713 })}>ธรรมศาสตร์</button>
-          
-          <Select options={Get_location()} onChange={(event) => Find_geolocation(event)} ></Select>
-          <br></br>
-          {/* <AsyncSelect
-            cacheOptions
-            // defaultOptions
-            getOptionLabel={e => e.value}
-            getOptionValue={e => e.id}
-            // defaultOptions={Get_data()}
-            loadOptions={Get_data()}
-            onInputChange={this.handleInputChange} /> */}
+              <button onClick={() => map.location({ lon: 100.60753718018532, lat: 14.069046759560713 })}>ธรรมศาสตร์</button>
+              
+              <Select options={Get_location()} onChange={(event) => Find_geolocation(event)} ></Select>
+              <br></br>
+              {/* <AsyncSelect
+                cacheOptions
+                // defaultOptions
+                getOptionLabel={e => e.value}
+                getOptionValue={e => e.id}
+                // defaultOptions={Get_data()}
+                loadOptions={Get_data()}
+                onInputChange={this.handleInputChange} /> */}
+          </div>
 
+        </div>
+        <div className={styles.btn_section}>
+          <div className={styles.confirm}><Form_location/></div>
+        </div>
+        <div className={styles.map_section}>
+          <div className={styles.map}>
+
+            <LongdoMap id="longdo-map" mapKey={mapKey} callback={this.initMap} />
+
+          </div>
         </div>
         
-        <div>
-
-        </div>
 
 
 
-    </>
+      </>
     );
   }
 }

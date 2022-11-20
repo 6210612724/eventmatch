@@ -10,6 +10,8 @@ export default function Home() {
       activityName:"",
     }]);
 
+    const [user,setUser] = useState("");
+
     useEffect(() => {
       
   
@@ -28,11 +30,36 @@ export default function Home() {
       })
     }, []);
 
+    
+
+
+    useEffect(() => {
+      const token = localStorage.getItem('token')      
+      fetch("http://localhost:4000/auth", {
+          method:'POST',
+          headers: {
+              'Content-Type':'application/json',
+              'Authorization' : 'Bearer '+ token
+          }, 
+          
+      })
+      .then(response => response.json())
+      .then(data => {
+          if (data.status == 'ok'){
+            setUser(data.decoded.username)
+          }else{          
+            console.log("s")
+          }
+          
+      })    
+    }, []);
+
+    console.log(user)
 
 
     const activityCard = activity.map((activity,index) =>{
       return (
-         <ActivityCard key={index} act={activity.activityName}/>
+         <ActivityCard key={index} act={activity.activityName} user={user}/>
       )
     })
   

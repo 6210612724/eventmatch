@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Route, Redirect } from 'react-router';
 import styles from './Welcome.module.css'
 
 
@@ -29,7 +30,43 @@ function Login(){
 
 export default function Home() {
     const [status, setStatus] = useState("welcome");
+    const [loginForm, setLoginForm] = useState({    
 
+        username: "",
+        password: "",   
+       
+      });
+
+      function handleChange(e) {
+        setLoginForm({ ...loginForm, [e.target.name]: e.target.value });    
+        
+    }
+    
+    async function handleSubmit(e) {        
+        e.preventDefault();      
+        fetch("http://localhost:4000/login", {
+            method:'POST',
+            mode: 'cors',
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                'Content-Type':'application/json'
+            }, 
+            body:JSON.stringify(loginForm)
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status == 'ok'){          
+                localStorage.setItem('token',data.token)
+              
+                
+              }else{
+                alert("Login Failed")
+              }
+             
+        })    
+    }
+
+    
     return (
         <div className={styles.container}>
             {status === "welcome" &&
@@ -55,10 +92,10 @@ export default function Home() {
                 <div className={styles.form_container}>
 
                     <div className={styles.form_box}>
-                        <form id="login_form" onSubmit={() => Login()}>
+                        <form onSubmit={handleSubmit}>
                             <button className={styles.back_btn} onClick={() => setStatus('welcome')}>ย้อนกลับ </button><br></br>
-                            <input name="username" placeholder='username' required /><br></br>
-                            <input name="password" placeholder='password' required /><br></br>
+                            <input name="username" placeholder='username' required  onChange={handleChange}/><br></br>
+                            <input name="password" placeholder='password' required  onChange={handleChange}/><br></br>
                             <input type="submit" value="login" />
 
                         </form>

@@ -1,6 +1,8 @@
 var express = require('express')
 var cors = require('cors')
 var app = express()
+var bodyParser = require('body-parser')
+var jsonParser = bodyParser.json()
 
 // import models
 const product = require("./models/product")
@@ -13,6 +15,8 @@ const user = require("./models/user")
 const mongoose = require("mongoose");
 const dbName = "allData"
 // ถ้าไม่เลือก database name มันจะสร้าง database "test" ให้อัตโนมัติ 
+//
+
 
 const url = `mongodb://root:thanawin27@ac-pkga0xd-shard-00-00.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-01.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-02.obwrvlc.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-djl2tz-shard-0&authSource=admin&retryWrites=true&w=majority`
 
@@ -99,16 +103,16 @@ app.get('/insert/register', (req, res) => {
   console.log(JSON.stringify(req.query))
 })
 
-app.get('/login', async (req, res) => {
-  // let login_data = new user(req.query)
-  let username = req.query.username
-  let password = req.query.password
-  let check_login = await user.findOne({username:username,password:password})
+
+app.post('/login', jsonParser,function (req, res, next){
+  let username = req.body.username
+  let password = req.body.password
+  let check_login = user.findOne({username:username,password:password})
 
   if(check_login != null){ 
 
     var token = jwt.sign({ username: username }, secret);
-    // res.json({status:'ok',message:'login success',token})
+    res.json({status:'ok',message:'login success',token})
     console.log(token)
   }else{
     check_login = "Wrong Username or Password..."
@@ -120,7 +124,17 @@ app.get('/login', async (req, res) => {
 })
 
 
-
+app.post('/auth', jsonParser,function (req, res, next){
+  try{
+       const token = req.headers.authorization.split(' ')[1]
+       var decoded = jwt.verify(token, secret);
+       res.json({status:'ok',decoded})
+       res.json({decoded})
+ 
+  } catch(err){
+   res.json({status:'error',message:err.message})
+  }
+})
 
 
 

@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema ({
 
 })
 
-var data = mongoose.model("User", userSchema)
+var data = mongoose.model("product", userSchema)
 
 module.exports = data
 ;

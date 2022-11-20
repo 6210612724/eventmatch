@@ -6,6 +6,7 @@ var app = express()
 const product = require("./models/product")
 const location = require("./models/location")
 const activity = require("./models/activity")
+const user = require("./models/user")
 
 
 // Mongoose
@@ -53,6 +54,9 @@ async function findAll_data(collection) {
       break
     case "activity":
       data = await activity.find({})
+      break
+    case "user":
+      data = await user.find({})
       break
     default:
       return { error: "wrong path" }
@@ -104,6 +108,7 @@ app.get('/reset', async (req, res) => {
   product.remove().exec()
   location.remove().exec()
   activity.remove().exec()
+  user.remove().exec()
 
   res.send("deleted all data")
 })

@@ -5,16 +5,27 @@ import {Link} from "react-router-dom";
 
 export default function Home() {
   return (
-    <div className={styles.container}>       
-       <Link style={{ textDecoration: 'none' }} to="/home">
-        <h3>Home</h3>
-       </Link>
-       <Link style={{ textDecoration: 'none' }} to="/createactivity">
-        <h3>Create Activity</h3>
-       </Link>
-       <Link style={{ textDecoration: 'none' }} to="/">
-       <h3>Log out</h3>
-       </Link>
+    <div className={styles.container}>  
+      <div className={styles.btn_container}>   
+        <Link style={{ textDecoration: 'none' }} to="/home">
+            <div className={styles.btn}>
+              <img src='/HomeLogo.svg' alt='Home'/>
+           
+            </div>
+        </Link>
+
+        <Link style={{ textDecoration: 'none' }} to="/createactivity">
+            <img src='/AddLogo.svg' alt='Home'/>
+          
+        </Link>
+
+        <Link style={{ textDecoration: 'none' }} to="/">
+            <img src='/ActivityLogo.svg' alt='Home'/>
+        </Link>
+        <Link style={{ textDecoration: 'none' }} to="/myactivity">
+            <img src='/ActivityLogo.svg' alt='Home'/>
+        </Link>
+       </div>  
     </div>
   )
 }

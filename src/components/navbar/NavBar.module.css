@@ -1,13 +1,29 @@
 .container{
     width: 100%;
     height: 13vh;
-    background-color: red;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.127) 0px -10px 28px, rgba(0, 0, 0, 0.177) 0px 10px 10px;
     position: absolute;
     bottom: 0;
     font-family: 'Kanit', sans-serif;
     display: flex;
+    
 }
 
-.container h3{
-    margin-right: 20px;
+
+
+.btn_container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px
+    
 }
+
+.container img{
+    width: 40px;
+    height: 40px;
+    margin-top: 20px;
+}
+

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="AddLogo" transform="translate(0 0.068)">
+    <g id="Layer_2" data-name="Layer 2" transform="translate(4.119 4.119)">
+      <path id="Path_1" data-name="Path 1" d="M20.848,38.7A17.848,17.848,0,1,1,38.7,20.848,17.848,17.848,0,0,1,20.848,38.7Zm0-32.949a15.1,15.1,0,1,0,15.1,15.1A15.1,15.1,0,0,0,20.848,5.746Z" transform="translate(-3 -3)"/>
+      <path id="Path_2" data-name="Path 2" d="M16.373,28.22A1.373,1.373,0,0,1,15,26.848V10.373a1.373,1.373,0,0,1,2.746,0V26.848A1.373,1.373,0,0,1,16.373,28.22Z" transform="translate(1.475 -0.763)"/>
+      <path id="Path_3" data-name="Path 3" d="M26.848,17.746H10.373a1.373,1.373,0,0,1,0-2.746H26.848a1.373,1.373,0,0,1,0,2.746Z" transform="translate(-0.763 1.475)"/>
+    </g>
+    <g id="frame">
+      <rect id="Rectangle_1" data-name="Rectangle 1" width="44" height="44" transform="translate(0 -0.068)" fill="none"/>
+    </g>
+  </g>
+</svg>

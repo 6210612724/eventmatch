@@ -5,6 +5,7 @@ import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
 import Map_show  from './Map/Longdo_Show';
 import CreateActivity from './pages/CreateActivity/CreateActivity';
+import MyActivity from './pages/MyActivity/MyActivity';
 import {
   BrowserRouter as Router,
   Routes,

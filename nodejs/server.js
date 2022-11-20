@@ -51,6 +51,9 @@ async function findAll_data(collection) {
     case "product":
       data = await product.find({})
       break
+    case "activity":
+      data = await activity.find({})
+      break
     default:
       return { error: "wrong path" }
 
@@ -107,18 +110,10 @@ app.get('/reset', async (req, res) => {
 
 app.get('/find/:collection', async (req, res) => {
   var data = await findAll_data(req.params.collection)
-  // let page = req.query.page ?? 1
-  // let per_page = req.query.per_page ?? 10
-  // let total = req.query.total ?? 12
-  // let total_page = req.query.total_page ??2
-  let page = req.query.page ?? 1
-  let per_page = req.query.per_page ?? 10
-  let total = await product.count() ?? 5
-  let total_page = Math.ceil(total / per_page) ?? 2
 
 
-
-  res.json(data,)
+  res.json(data)
+  // res.status(400)
 })
 
 app.listen(port = 4000, function () {

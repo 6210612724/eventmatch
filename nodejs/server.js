@@ -6,13 +6,14 @@ var app = express()
 const product = require("./models/product")
 const location = require("./models/location")
 const activity = require("./models/activity")
+const user = require("./models/user")
 
 
 // Mongoose
 const mongoose = require("mongoose");
 const dbName = "allData"
 // ถ้าไม่เลือก database name มันจะสร้าง database "test" ให้อัตโนมัติ
-const url = `mongodb://root:thanawin27@ac-pkga0xd-shard-00-00.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-01.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-02.obwrvlc.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-djl2tz-shard-0&authSource=admin&retryWrites=true&w=majority`
+const url = `mongodb://123456:102030@ac-8cirrld-shard-00-00.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-01.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-02.wknopaa.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-l9gxf6-shard-0&authSource=admin&retryWrites=true&w=majority`
 // ใน mongodb atlas ให้เลือก Driver Node.js ที่ Version "2.2.12 or later"
 
 mongoose.connect(url, {
@@ -54,6 +55,9 @@ async function findAll_data(collection) {
     case "activity":
       data = await activity.find({})
       break
+    case "user":
+      data = await user.find({})
+      break
     default:
       return { error: "wrong path" }
 
@@ -83,15 +87,14 @@ app.get('/insert/activity', (req, res) => {
   let activity_data = new activity(req.query)
   activity_data.save()
   console.log(JSON.stringify(req.query))
-
-  // console.log(
-  //   `
-  //   ${req.query.activityName}
-  //   ${req.query.lon}
-  //   ${req.query.lat}
-  //   ${req.query.activityDesc}
-  //   `)
 })
+
+app.get('/insert/register', (req, res) => {
+  let register_data = new user(req.query)
+  register_data.save()
+  console.log(JSON.stringify(req.query))
+})
+
 
 
 
@@ -104,6 +107,7 @@ app.get('/reset', async (req, res) => {
   product.remove().exec()
   location.remove().exec()
   activity.remove().exec()
+  user.remove().exec()
 
   res.send("deleted all data")
 })

@@ -16,6 +16,10 @@ const dbName = "allData"
 const url = `mongodb://123456:102030@ac-8cirrld-shard-00-00.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-01.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-02.wknopaa.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-l9gxf6-shard-0&authSource=admin&retryWrites=true&w=majority`
 // ใน mongodb atlas ให้เลือก Driver Node.js ที่ Version "2.2.12 or later"
 
+// jswebtoken
+var jwt = require('jsonwebtoken');
+var secret = 'SteveJobsHaha'
+
 mongoose.connect(url, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -94,6 +98,28 @@ app.get('/insert/register', (req, res) => {
   register_data.save()
   console.log(JSON.stringify(req.query))
 })
+
+app.get('/login', async (req, res) => {
+  // let login_data = new user(req.query)
+  let username = req.query.username
+  let password = req.query.password
+  let check_login = await user.findOne({username:username,password:password})
+
+  if(check_login != null){ 
+
+    var token = jwt.sign({ username: username }, secret);
+    // res.json({status:'ok',message:'login success',token})
+    console.log(token)
+  }else{
+    check_login = "Wrong Username or Password..."
+  }
+  
+  console.log(check_login)
+  
+  // console.log(JSON.stringify(req.query))
+})
+
+
 
 
 

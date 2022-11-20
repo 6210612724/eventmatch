@@ -11,9 +11,6 @@ function Insert_register() {
     // fetch(`http://localhost:4000/insert/activity?activityName=${activityName}&lon=${lon}&lat=${lat}&activityDesc=${activityDesc}`)
     fetch(`http://localhost:4000/insert/register?username=${username}&password=${password}&email=${email}`)
 
-
-
-
     alert(`
 username : ${username}
 password : ${password}
@@ -22,8 +19,16 @@ email : ${email}
 
 }
 
+function Login(){
+    let username = document.forms["login_form"]["username"].value
+    let password = document.forms["login_form"]["password"].value
+    fetch(`http://localhost:4000/login?username=${username}&password=${password}`)
+
+
+}
+
 export default function Home() {
-    const [status,setStatus] = useState("welcome");
+    const [status, setStatus] = useState("welcome");
 
     return (
         <div className={styles.container}>
@@ -48,23 +53,27 @@ export default function Home() {
 
             {status === "login" &&
                 <div className={styles.form_container}>
-                    
-                        <div className={styles.form_box}>
-                            <button className={styles.back_btn} onClick={()=>setStatus('welcome')}>ย้อนกลับ </button>
-                            <input placeholder='username'/>
-                            <input placeholder='password'/>
-                            
-                        </div>
-                </div>           
-            
+
+                    <div className={styles.form_box}>
+                        <form id="login_form" onSubmit={() => Login()}>
+                            <button className={styles.back_btn} onClick={() => setStatus('welcome')}>ย้อนกลับ </button><br></br>
+                            <input name="username" placeholder='username' required /><br></br>
+                            <input name="password" placeholder='password' required /><br></br>
+                            <input type="submit" value="login" />
+
+                        </form>
+
+                    </div>
+                </div>
+
             }
             {status === "Signup" &&
                 <div className={styles.form_container}>
                     <div className={styles.form_box}>
                         <form id="registerform_form" onSubmit={() => Insert_register()} >
-                            <button className={styles.back_btn} onClick={()=>setStatus('welcome')}>ย้อนกลับ </button>
-                            <input name="username" placeholder='username' required/>
-                            <input name="email" placeholder='email' required/>
+                            <button className={styles.back_btn} onClick={() => setStatus('welcome')}>ย้อนกลับ </button>
+                            <input name="username" placeholder='username' required />
+                            <input name="email" placeholder='email' required />
                             <input name="password" placeholder='password' required />
                             <input type='submit' value="สมัครสมาชิก" />
                         </form>

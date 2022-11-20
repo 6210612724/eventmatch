@@ -76,4 +76,11 @@
     background-color: white;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form_box{
+    width: 60vw;
 }

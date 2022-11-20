@@ -25,9 +25,11 @@ export default function Home() {
             }
             {status === "Signup" &&
                 <div className={styles.form_container}>
-                    <input placeholder='email'/>
-                    <input placeholder='username'/>
-                    <input placeholder='password'/>
+                        <div className={styles.form_box}>
+                            <input placeholder='username'/>
+                            <input placeholder='email'/>
+                            <input placeholder='password'/>
+                        </div>
                 </div>           
             
             }

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Welcome from './pages/Welcome/Welcome';
 import Home from './pages/Home/Home';
+import Map_show  from './Map/Longdo_Show';
 import CreateActivity from './pages/CreateActivity/CreateActivity';
 import MyActivity from './pages/MyActivity/MyActivity';
 import {
@@ -17,8 +18,9 @@ root.render(
       <Routes >         
           <Route path="/" element={<Welcome />} />      
           <Route path="/home" element={<Home/>} />  
-          <Route path="/createactivity" element={<CreateActivity/>} />  
-          <Route path="/myactivity" element={<MyActivity/>} />      
+          <Route path="/createactivity" element={<CreateActivity/>} /> 
+          <Route path="/map" element={<Map_show/>} /> 
+                 
       </Routes>
   </Router>
 );

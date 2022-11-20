@@ -19,10 +19,10 @@ export default function Home() {
           
         </Link>
 
-        <Link style={{ textDecoration: 'none' }} to="/">
+        <Link style={{ textDecoration: 'none' }} to="/myactivity">
             <img src='/ActivityLogo.svg' alt='Home'/>
         </Link>
-        <Link style={{ textDecoration: 'none' }} to="/myactivity">
+        <Link style={{ textDecoration: 'none' }} to="/">
             <img src='/ActivityLogo.svg' alt='Home'/>
         </Link>
        </div>  

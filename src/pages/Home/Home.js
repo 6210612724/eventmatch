@@ -5,7 +5,10 @@ import ActivityCard from '../../components/ActivityCard/ActivityCard';
 
 export default function Home() {
 
-  // test data
+    const [activity, setActivity] = useState([{
+      _id: "",
+      activityName:"",
+    }]);
 
     useEffect(() => {
       
@@ -20,17 +23,26 @@ export default function Home() {
       })
       .then(response => response.json())
       .then(data => {
+        setActivity(data)
         
-        console.log(data)
-
       })
     }, []);
+
+
+
+    const activityCard = activity.map((activity,index) =>{
+      return (
+         <ActivityCard key={index} act={activity.activityName}/>
+      )
+    })
+  
     return (
       <div className={styles.container}>     
           <div className={styles.card_container}>
               <div className={styles.cardbox}>
-                 <ActivityCard/>
                  
+                  {activityCard}
+
               </div>
           </div>
           <NavBar className={styles.navbar}/>

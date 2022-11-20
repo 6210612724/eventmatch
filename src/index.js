@@ -19,6 +19,7 @@ root.render(
           <Route path="/" element={<Welcome />} />      
           <Route path="/home" element={<Home/>} />  
           <Route path="/createactivity" element={<CreateActivity/>} /> 
+          <Route path="/myactivity" element={<MyActivity/>} /> 
           <Route path="/map" element={<Map_show/>} /> 
                  
       </Routes>

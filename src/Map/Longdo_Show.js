@@ -125,37 +125,32 @@ class Map_Show extends Component {
       {/* name = ตรง div เปรียบได้กับการส่ง data ให้กับหน้านั้นนะจ๊ะ */}
       {/* <Form_location locate={map.location()} ></Form_location> */}
       <Form_location  ></Form_location>
-      <div>
-        <button style={{}} onClick={() => Get_loc_lat()}>get loc&lat</button>
-        <button onClick={() => map.location(longdo.LocationMode.Geolocation)}>My location</button>
-        <button onClick={() => fetch("http://localhost:4000/add")}>add test node</button>
-        <button onClick={() => fetch("http://localhost:4000/reset")}>reset test nodet</button>
-
-      </div>
+      
 
       <div style={{ float: "left", width: "85%", height: `750px`, }}>
 
         <LongdoMap id="longdo-map" mapKey={mapKey} callback={this.initMap} />
 
       </div>
-      <div style={{ float: "left", width: "15%", height: `750px`, }}>
-        <button onClick={() => map.location({ lon: 100.60753718018532, lat: 14.069046759560713 })}>ธรรมศาสตร์</button>
-        <button onClick={() => Get_data()}>Fetch api test</button>
-        <Select options={Get_location()} onChange={(event) => Find_geolocation(event)} ></Select>
-        <br></br>
-        {/* <AsyncSelect
-          cacheOptions
-          // defaultOptions
-          getOptionLabel={e => e.value}
-          getOptionValue={e => e.id}
-          // defaultOptions={Get_data()}
-          loadOptions={Get_data()}
-          onInputChange={this.handleInputChange} /> */}
+        <div className={styles.dropdown} >
+          <button onClick={() => map.location({ lon: 100.60753718018532, lat: 14.069046759560713 })}>ธรรมศาสตร์</button>
+          
+          <Select options={Get_location()} onChange={(event) => Find_geolocation(event)} ></Select>
+          <br></br>
+          {/* <AsyncSelect
+            cacheOptions
+            // defaultOptions
+            getOptionLabel={e => e.value}
+            getOptionValue={e => e.id}
+            // defaultOptions={Get_data()}
+            loadOptions={Get_data()}
+            onInputChange={this.handleInputChange} /> */}
 
-      </div>
-      <div>
+        </div>
+        
+        <div>
 
-      </div>
+        </div>
 
 
 

@@ -1,9 +1,11 @@
 import React , {useState,useEffect}from 'react'
 import styles from './CreateActivity.module.css'
 import NavBar from '../../components/navbar/NavBar';
+import { Route,useNavigate } from 'react-router';
 import Map from '../../Map/Longdo_Show'
 
 export default function Home() {
+  const navigate = useNavigate();
   const [user,setUser] = useState("");
   useEffect(() => {
     const token = localStorage.getItem('token')      
@@ -20,7 +22,7 @@ export default function Home() {
         if (data.status == 'ok'){
           setUser(data.decoded.username)
         }else{          
-          console.log("s")
+          navigate('/');
         }
         
     })    

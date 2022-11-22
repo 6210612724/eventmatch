@@ -6,6 +6,7 @@
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
     margin-top: 20px;
     font-family: 'Kanit', sans-serif;
+    list-style: none;
 }
 
 .act_title{
@@ -34,4 +35,14 @@
     background-color: #e24020;
     color: white;
     border-radius: 15px;
+}
+
+
+.disct{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.disc{
+    margin-left: 20px;
 }

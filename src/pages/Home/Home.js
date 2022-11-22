@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react'
+import { Route,useNavigate } from 'react-router';
 import styles from './Home.module.css'
 import NavBar from '../../components/navbar/NavBar';
 import ActivityCard from '../../components/ActivityCard/ActivityCard';
 
 export default function Home() {
+    const navigate = useNavigate();
     const [lat,setLat] = useState(null)
     const [lng,setLng] = useState(null)
 
@@ -57,7 +59,7 @@ export default function Home() {
           if (data.status == 'ok'){
             setUser(data.decoded.username)
           }else{          
-            console.log("s")
+            navigate('/');
           }
           
       })    

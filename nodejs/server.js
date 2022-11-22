@@ -18,7 +18,7 @@ const dbName = "allData"
 //
 
 
-const url = `mongodb://123456:102030@ac-8cirrld-shard-00-00.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-01.wknopaa.mongodb.net:27017,ac-8cirrld-shard-00-02.wknopaa.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-l9gxf6-shard-0&authSource=admin&retryWrites=true&w=majority`
+const url = `mongodb://root:thanawin27@ac-pkga0xd-shard-00-00.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-01.obwrvlc.mongodb.net:27017,ac-pkga0xd-shard-00-02.obwrvlc.mongodb.net:27017/${dbName}?ssl=true&replicaSet=atlas-djl2tz-shard-0&authSource=admin&retryWrites=true&w=majority`
 
 // jswebtoken
 var jwt = require('jsonwebtoken');

@@ -124,10 +124,10 @@ class Map_Show extends Component {
 
     return (
       <>
-        <p>{this.props.user}</p>
+       
         <div className={styles.dropdown_section}>
         <div className={styles.dropdown} >
-              <button onClick={() => map.location({ lon: 100.60753718018532, lat: 14.069046759560713 })}>ธรรมศาสตร์</button>
+             
               
               <Select options={Get_location()} onChange={(event) => Find_geolocation(event)} ></Select>
               <br></br>

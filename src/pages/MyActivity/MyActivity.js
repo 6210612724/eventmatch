@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Route,useNavigate } from 'react-router';
 import styles from './MyActivity.module.css'
 import NavBar from '../../components/navbar/NavBar';
 import MyActivityCard from '../../components/MyActivityCard/MyActivityCard';
@@ -6,7 +7,15 @@ import MyActivityCard from '../../components/MyActivityCard/MyActivityCard';
 
 
 export default function Home() {
+  const navigate = useNavigate();
   const [user, setUser] = useState("test");
+  const [activity, setActivity] = useState([{
+    _id: "",
+    activityName:"",
+    lon: "",
+    lat: "",
+    activityDesc: "",
+  }]);
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -26,21 +35,27 @@ export default function Home() {
           
           
         } else {
-          console.log("กรุณาทำการ login ก่อน")
+          navigate('/');
 
         }
 
         fetch(`http://localhost:4000/myActivity?user=${data.decoded.username}`)
           .then(response => response.json())
           .then(data => {
-            console.log(data)
+           
+            setActivity(data)
             //response data จาก backend
           })
 
       })
   }, []);
 
-
+  const activityCard = activity.map((activity,index) =>{
+    return (
+        <MyActivityCard key={index} act={activity.activityName} desc={activity.activityDesc} />
+        
+    )
+  })
   // useEffect(() => {
 
 
@@ -58,7 +73,7 @@ export default function Home() {
     <div className={styles.container}>
       <div className={styles.card_container}>
         <div className={styles.cardbox}>
-          <MyActivityCard />
+          {activityCard}
         </div>
       </div>
       <NavBar className={styles.navbar} />

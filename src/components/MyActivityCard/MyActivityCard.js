@@ -3,17 +3,18 @@ import styles from './MyActivityCard.module.css'
 
 
 
-export default function Home() {
+export default function Home(props) {
   
-  
+  const {act,desc} = props
 
   return (
     <div className={styles.container}>  
-      <p className={styles.act_title}>ไปเดินเยาวราช</p>
-      <p className={styles.create_by}>สร้างโดย</p>
-      <div className={styles.confirm_container}>
-        <button className={styles.confirm_btn}>ยกเลิกกิจกรรม</button>
-      </div>
+      <p className={styles.act_title}>{act}</p>
+      <li className={styles.disct}>รายละเอียด</li>
+      <li className={styles.disc}>{desc}</li>
+    
+      
     </div>
   )
 }
+
